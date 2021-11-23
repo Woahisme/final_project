@@ -20,7 +20,7 @@ var app     = express();
 
 app.get('/', function(req,res){
    console.log(':)), Server New Hit: ' + timeStamp())
-   res.send(':)), Server New Hit: ' + timeStamp());
+   res.send(':)), Server New Hit yall: ' + timeStamp());
 });
 
 function timeStamp(){
