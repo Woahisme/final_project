@@ -7,43 +7,66 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+    <div id="accountDetails"> 
 
-Please enter the following account information:<br>
-Name: <input type="text" id="firstName"><br>
-Email: <input type="text" id="email"><br>
+        Please enter the following account information:<br>
+        Name: <input type="text" id="firstName"><br>
+        Email: <input type="text" id="email"><br>
+        
+        <button onclick="addAccountinfo()">Submit</button> 
 
-<button onclick="addContact()">Submit</button> 
+    </div> 
 
-<script src="https://cdn.jsdelivr.net/npm/superagent"></script>
+    <div id="loading" class="d-none">
+    loading
+
+    </div> 
+    <div id="output" class="d-none"></div>
+    <div id="output" class=""><p class="display-1 text-primary"> hello Rebecca </p><p> Your email is: rebeccalspiewak@gmail.com </p></div>
+
+
+<script src='https://cdn.jsdelivr.net/npm/superagent'></script>
+
 <script>
-function addContact(){
-    var url = '/add';
+function addAccountinfo(){
+    var url = '/add?';
 
    var firstName = document.getElementById('firstName').value;
    console.log(firstName);
-   var url = `/add?firstName=${firstName}`;
+   url += `firstName=${firstName}&`;
 
    var email = document.getElementById('email').value;
    console.log(email);
-   var url = `/add?email=${email}`;;
+   url += `email=${email}`;
 
-   superagent
+   console.log(url);
+   // console.log until can be input into user interface
+   console.log('loading');
 
-       .get(url)
-       .end(function(err, res){
-           if (err) {
-               console.log('err:',err);
-           } else {
-               console.log('response:',res.text);
-           }
-       });
+   var account = document.getElementById('accountDetails');
+   var loading = document.getElementById('loading');
+   var output = document.getElementById('output');
+
+   account.classList.add('d-none'); //take account div, look at class list, add d-none class to that div
+   loading.classList.remove('d-none');
+
+   // may need an & later
+
+   superagent.get(url)
+    .end(function(err, res){
+        if (err) {
+            console.log('err:',err);
+        } else {
+            console.log('response: html',res.text); //info on what we got back from server, not needed
+            loading.classList.add('d-none');
+            output.innerHTML = res.text; // put information into the output
+            output.classList.remove('d-none');
+        }
+    });
 }
-</script>
-
-
-
 </script>
 
     
