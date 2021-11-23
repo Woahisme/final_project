@@ -1,0 +1,53 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+</head>
+<body>
+
+Please enter the following account information:<br>
+Name: <input type="text" id="firstName"><br>
+Email: <input type="text" id="email"><br>
+
+<button onclick="addContact()">Submit</button> 
+
+<script src="https://cdn.jsdelivr.net/npm/superagent"></script>
+<script>
+function addContact(){
+    var url = '/add';
+
+   var firstName = document.getElementById('firstName').value;
+   console.log(firstName);
+   var url = `/add?firstName=${firstName}`;
+
+   var email = document.getElementById('email').value;
+   console.log(email);
+   var url = `/add?email=${email}`;;
+
+   superagent
+
+       .get(url)
+       .end(function(err, res){
+           if (err) {
+               console.log('err:',err);
+           } else {
+               console.log('response:',res.text);
+           }
+       });
+}
+</script>
+
+
+
+</script>
+
+    
+</body>
+</html>
+
+
