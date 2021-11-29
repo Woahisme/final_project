@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>final project shodan api_v01</title>
+</head>
+<body>
+    <p>hi there mon frere</p>
+    
+    <script>
+
+        // SHODAN API CREATED - USE!!
+        const mykey = 'pGAKyCr0f1IhzPzKb8w5tYqQW8uryOLt';
+        var testIP = '18.9.47.51';
+        let shodanAPIurl = 'https://api.shodan.io/shodan/host/';
+        shodanAPIurl += `${testIP}?`;
+        shodanAPIurl += `key=${mykey}`;
+
+        async function getShodaninfo(){
+            const response = await fetch(shodanAPIurl, {
+                method:'GET',
+                minify:true,
+            });
+            const data = await response.json();
+            console.log(data);
+            console.log('For device' + data.hostnames + ' the open ports are: ' + data.ports);
+            for (let i = 0; i < data.data.length; i++){
+                console.log('On port ' + data.data[i].port + ' the following vulnerabilities exist: ');
+                var allKeys = Object.keys(data['data'][i]['vulns'])
+                console.log(allKeys);
+                
+                for (let j = 0; j < allKeys.length; j++) {
+                    //console.log('in description loop');
+                    let a = Number(i) + 1;
+                    let b = Number(j) + 1;
+                    var vulnName = allKeys[j];
+                    var vulnSummary = (data['data'][i]['vulns'][allKeys[j]]['summary']);
+                    console.log(a + '.' + b + ' Name: ' + vulnName + ' Description: ' + vulnSummary);
+                }
+            };
+            
+            };
+            getShodaninfo();
+
+    </script>
+</body>
+</html>
