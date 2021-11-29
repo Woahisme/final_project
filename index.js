@@ -5,7 +5,7 @@ const path = require('path');
 const { dataClasses, search } = require('hibp');
 
 // used to serve static files from public directory
-//app.use(express.static('public'));
+app.use(express.static('public'));
 
 //var enteredAccount = 'rebeccalspiewak@gmail.com';
 var myapikey = 'c0b447304b8c45e985ccd54b9eb44fa0';
@@ -13,6 +13,11 @@ var myapikey = 'c0b447304b8c45e985ccd54b9eb44fa0';
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 });
+
+// //alt for above
+// app.get('/*', (req, res) => {
+//   res.sendFile(path.resolve("public", "index.html"));
+// });
 
 var port = 3000;
 app.listen(port,function(){
