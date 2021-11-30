@@ -4,6 +4,7 @@ Threat Siphon - Final Project, Fall '21
 To run:
 
 0 - install dependencies from package.json
+
 1 - start up index.js
 2 - navigate to local host in browser
 3 - input name and email
