@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -13,7 +13,8 @@
     "evilscan": "^1.8.1",
     "express": "^4.17.1",
     "hibp": "^11.0.0",
-    "mysql2": "^2.3.3",
+    "json-server": "^0.17.0",
+    "network-list": "^1.1.5",
     "shodan-client": "^3.2.0"
   }
 }

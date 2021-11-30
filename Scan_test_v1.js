@@ -1,4 +1,6 @@
 
+//backup, already incorporated elseware 
+// part 1 - port scan
 const Evilscan = require('evilscan');
 
 RebeccaIP = '137.83.123.21'
@@ -13,7 +15,7 @@ const options = {
 
 const evilscan = new Evilscan(options);
 evilscan.on('result',data => {
-    console.log(data); // what will show up for deliverable #1 demo
+    console.log(data); // 
 });
 
 evilscan.on('error', err => {
@@ -24,3 +26,47 @@ evilscan.on('done', () => {
 });
 
 evilscan.run();
+
+//part 2 - network scan
+
+const netList = require('network-list');
+
+netList.scanEach({}, (err, obj) => {
+    for (const [key, value] of Object.entries(obj)){
+        if (value == true) {
+            //console.log(`${key}: ${value}`);
+            console.log(obj);
+        }
+    }
+    
+    //console.log(obj); // device object
+});
+
+
+// netList.scan({}, (err, arr) => {
+//     //console.log(arr); // array with all devices
+//     var res = arr.reduce((acc,item,index) => {
+//         acc[`place${index}`] = item;
+//         console.log(acc)
+        
+        //return acc;
+
+        //var hasMatch = false;
+        //for (var index = 0; index < acc.length; ++index) {
+          //  var id = acc[index]
+            //console.log(id);
+            
+            // if (id.alive == true) {
+            //     console.log(id.alve);
+            //     i += 1;
+            // } else {
+            //     i += 1;
+            // }
+            //break;
+           // };
+
+//         });
+       
+//       //console.log(res);
+//     }
+// );

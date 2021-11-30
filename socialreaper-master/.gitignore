@@ -1,8 +1,0 @@
-build/
-dist/
-builders/out.xml
-tests/test.py
-socialreaper.egg-info/
-.idea
-*__pycache__*
-docs/_*/
