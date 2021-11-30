@@ -1,5 +1,5 @@
 
-//backup, already incorporated elseware 
+//backup code, already incorporated elseware 
 // part 1 - port scan
 const Evilscan = require('evilscan');
 

@@ -2,8 +2,8 @@
 import json
 
 from facebook_scraper import get_profile
-#pass through name from webpage
-json_data = get_profile("rebecca.spiewak.7", cookies="./fbcookies.json")
+#pass through name from webpage once issue is fixed
+json_data = get_profile("passparam", cookies="./fbcookies.json")
 
 # json_object = json.loads(json_data)
 
